@@ -140,9 +140,9 @@ var Projects = {
     "projects" :[
        {
         "title" : "SPEECH RECOGNISATION",
-        "dates" : "2016-Present",
+        "dates" : "2016",
         "description" : "I worked under Chitkara University's Research Department(CURIN) on Natural Language Speech Recognisation in Punjabi Language",
-        "image" : "images/image2.jpg",
+        "image" : "images/image2.png",
         "url" : "https://www.facebook.com/Chitkara-University-Speech-Recognition-Hub-1712477912326760/"
       },
       {
@@ -151,7 +151,14 @@ var Projects = {
         "description" : "I have made a responsive Portfolio page using bootstrap under FrontEnd Course",
         "image" : "images/image1.png",
         "url" : "https://github.com/samihaarya/Frontend-Project--3"
-     }
+     },
+     {
+       "title" : "Movie Website",
+       "dates" : "2016",
+       "description" : "I made a responsive website using python under Intro to programming",
+       "image" : "images/image3.png",
+       "url" : "https://github.com/samihaarya/Intro-to-programming---lesson-3"
+    }
   ]
 };
 Projects.display = function(){
