@@ -9,7 +9,7 @@ var bio = {
     "location" : "Rajpura,Punjab"
   },
   "welcomeMsg" : "A Smile is the Happiness you will find right under your Nose",
-  "skills" : ["HTML","CSS","JavaScript","Bootstrap","C"],
+  "skills" : ["HTML","CSS","JavaScript","Bootstrap","C","Python"],
   "biopic" : "images/IMG_20160704_083344.jpg"
 };
 function displaybio(){
