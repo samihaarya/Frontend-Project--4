@@ -37,7 +37,7 @@ bio.display= function() {
         }
     }
 
-}
+};
 
 var work = {
     "jobs": [{
@@ -64,7 +64,7 @@ work.display = function() {
         var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
         $(".work-entry:last").append(formattedDescription);
     }
-}
+};
 
 
 var education = {
@@ -123,7 +123,7 @@ education.display = function() {
             $(".education-entry:last").append(formattedURL);
         }
     }
-}
+};
 var projects = {
     "Projects": [{
             "title": "SPEECH RECOGNISATION",
@@ -156,7 +156,7 @@ projects.display = function() {
             $(".project-entry:last").append(formattedTitle);
             var formattedDates = HTMLprojectDates.replace("%data%", projects.Projects[i].dates);
             var formattedDescription = HTMLprojectDescription.replace("%data%", projects.Projects[i].description);
-    //        var formattedImage = HTMLprojectImage.replace("%data%", projects.Projects[i].image);
+
             $(".project-entry:last").append(formattedDates);
             $(".project-entry:last").append(formattedDescription);
             for (var n = 0; n < projects.Projects[i].image.length; n++) {
