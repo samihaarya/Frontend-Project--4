@@ -8,12 +8,12 @@ var bio = {
         "twitter": "@arya_samiha</a>",
         "location": "Rajpura,Punjab"
     },
-    "welcomeMsg": "A Smile is the Happiness you will find right under your Nose",
+    "welcomeMessage": "A Smile is the Happiness you will find right under your Nose",
     "skills": ["HTML", "CSS", "JavaScript", "Bootstrap", "C", "Python"],
     "biopic": "images/IMG_20160704_083344.jpg"
 };
 
-function displaybio() {
+bio.display= function() {
     var formattedName = HTMLheaderName.replace("%data%", bio.name);
     var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
     var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
@@ -21,17 +21,14 @@ function displaybio() {
     var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
     var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
     var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
-    var formattedMessage = HTMLwelcomeMsg.replace("%data%", bio.welcomeMsg);
+    var formattedMessage = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
     var formattedImage = HTMLbioPic.replace("%data%", bio.biopic);
     $("#header").prepend(formattedRole);
     $("#header").prepend(formattedName);
-    $("#topContacts").append(formattedMobile);
-    $("#topContacts").append(formattedEmail);
-    $("#topContacts").append(formattedGithub);
-    $("#topContacts").append(formattedTwitter);
-    $("#topContacts").append(formattedLocation);
+
     $("#header").append(formattedImage);
     $("#header").append(formattedMessage);
+   $('#topContacts, #footerContacts').append(formattedMobile, formattedEmail, formattedTwitter, formattedLocation);
     if (bio.skills.length > 0) {
         $("#header").append(HTMLskillsStart);
         for (var s = 0; s < bio.skills.length; s++) {
@@ -39,17 +36,9 @@ function displaybio() {
             $("#skills").append(formattedSkills);
         }
     }
-    $("#footerContacts").append(formattedMobile);
-    $("#footerContacts").append(formattedEmail);
-    $("#footerContacts").append(formattedGithub);
-    $("#footerContacts").append(formattedTwitter);
-    $("#footerContacts").append(formattedLocation);
+
 }
-displaybio();
-//bio displayed
-/**
-the display function of this particular object (bio in  this case), displays all the properties of that object in the resume.
-**/
+
 var work = {
     "jobs": [{
         "employer": "Chitkara University,Punjab",
@@ -60,7 +49,7 @@ var work = {
     }]
 };
 
-function displaywork() {
+work.display = function() {
     for (var job = 0; job < work.jobs.length; job++) {
         $("#workExperience").append(HTMLworkStart);
         var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
@@ -76,11 +65,7 @@ function displaywork() {
         $(".work-entry:last").append(formattedDescription);
     }
 }
-displaywork();
-//work displayed
-/**
-the display function of this particular object (work in  this case), displays all the properties of that object in the resume.
-**/
+
 
 var education = {
     "schools": [{
@@ -88,7 +73,7 @@ var education = {
             "location": "Rajpura, Punjab",
             "degree": "High School",
             "dates": "2013-2015",
-            "majors": "PCM",
+            "majors": ["Physics", "Chemestry", "Maths"],
             "url": "http://patelpublicschool.com/"
         },
         {
@@ -96,19 +81,19 @@ var education = {
             "location": "Chitkara University, Jhansala, Punjab",
             "degree": "BTech",
             "dates": "2015-2019",
-            "majors": "CompSci",
+            "majors": ["CompSci"],
             "url": "http://www.chitkara.edu.in/"
         }
     ],
     "onlineCourses": [{
         "title": "Front End Nanodegree",
-        "School": "Udacity",
-        "date": "Ongoing",
-        "Url": "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"
+        "school": "Udacity",
+        "dates": "Ongoing",
+        "url": "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"
     }]
 };
 
-function displayeducation() {
+education.display = function() {
     $("#education").append(HTMLschoolStart);
     if (education.schools.length > 0) {
         for (var j = 0; j < education.schools.length; j++) {
@@ -116,73 +101,94 @@ function displayeducation() {
             var formattedlocation = HTMLschoolLocation.replace("%data%", education.schools[j].location);
             var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[j].degree);
             var formattedDates = HTMLschoolDates.replace("%data%", education.schools[j].dates);
-            var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[j].majors);
-            var formattedUrl = HTMLschoolURL.replace("%data%", education.schools[j].majors);
+            var formattedUrl = HTMLschoolURL.replace("%data%", education.schools[j].url);
             $(".education-entry:last").append(formattedName + formattedDegree);
             $(".education-entry:last").append(formattedlocation);
             $(".education-entry:last").append(formattedDates);
+            for (var m = 0; m < education.schools[j].majors.length; m++) {
+              var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[j].majors[m]);
+              $(".education-entry:last").append(formattedMajor);
+            }
             $(".education-entry:last").append(formattedUrl);
         }
         $("#education").append(HTMLonlineClasses);
         $("#education").append(HTMLschoolStart);
         for (var c = 0; c < education.onlineCourses.length; c++) {
             var formattedTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[c].title);
-            var formattedSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[c].School);
-            var formattedDate = HTMLonlineDates.replace("%data%", education.onlineCourses[c].date);
-            var formattedURL = HTMLonlineURL.replace("%data%", education.onlineCourses[c].Url);
+            var formattedSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[c].school);
+            var formattedDate = HTMLonlineDates.replace("%data%", education.onlineCourses[c].dates);
+            var formattedURL = HTMLonlineURL.replace("%data%", education.onlineCourses[c].url);
             $(".education-entry:last").append(formattedTitle + formattedSchool);
             $(".education-entry:last").append(formattedDate);
             $(".education-entry:last").append(formattedURL);
         }
     }
 }
-displayeducation();
-//education displayed
-/**
-the display function of this particular object (education in  this case), displays all the properties of that object in the resume.
-**/
-
-var Projects = {
-    "projects": [{
+var projects = {
+    "Projects": [{
             "title": "SPEECH RECOGNISATION",
             "dates": "2016",
             "description": "I worked under Chitkara University's Research Department(CURIN) on Natural Language Speech Recognisation in Punjabi Language",
-            "image": "images/image2.png",
+            "image": ["images/image2.png"],
             "url": "https://www.facebook.com/Chitkara-University-Speech-Recognition-Hub-1712477912326760/"
         },
         {
             "title": "My Portfolio",
             "dates": "2016",
             "description": "I have made a responsive Portfolio page using bootstrap under FrontEnd Course",
-            "image": "images/image1.png",
+            "image": ["images/image1.png"],
             "url": "https://github.com/samihaarya/Frontend-Project--3"
         },
         {
             "title": "Movie Website",
             "dates": "2016",
             "description": "I made a responsive website using python under Intro to programming",
-            "image": "images/image3.png",
+            "image": ["images/image3.png"],
             "url": "https://github.com/samihaarya/Intro-to-programming---lesson-3"
         }
     ]
 };
-Projects.display = function() {
-
-    if (Projects.projects.length > 0) {
-        for (var i = 0; i < Projects.projects.length; i++) {
-            $("#projects").append(HTMLprojectStart);
-            var formattedTitle = HTMLprojectTitle.replace("%data%", Projects.projects[i].title).replace("#", Projects.projects[i].url);
+projects.display = function() {
+    if (projects.Projects.length > 0) {
+        for (var i = 0; i < projects.Projects.length; i++) {
+            $("#Projects").append(HTMLprojectStart);
+            var formattedTitle = HTMLprojectTitle.replace("%data%", projects.Projects[i].title).replace("#", projects.Projects[i].url);
             $(".project-entry:last").append(formattedTitle);
-            var formattedDates = HTMLprojectDates.replace("%data%", Projects.projects[i].dates);
-            var formattedDescription = HTMLprojectDescription.replace("%data%", Projects.projects[i].description);
-            var formattedImage = HTMLprojectImage.replace("%data%", Projects.projects[i].image);
+            var formattedDates = HTMLprojectDates.replace("%data%", projects.Projects[i].dates);
+            var formattedDescription = HTMLprojectDescription.replace("%data%", projects.Projects[i].description);
+    //        var formattedImage = HTMLprojectImage.replace("%data%", projects.Projects[i].image);
             $(".project-entry:last").append(formattedDates);
             $(".project-entry:last").append(formattedDescription);
-            $(".project-entry:last").append(formattedImage);
+            for (var n = 0; n < projects.Projects[i].image.length; n++) {
+              var formattedImage = HTMLprojectImage.replace("%data%", projects.Projects[i].image[n]);
+              $(".project-entry:last").append(formattedImage);
+            }
         }
     }
 };
-Projects.display();
+
+bio.display();
+//bio displayed
+/**
+the display function of this particular object (bio in  this case), displays all the properties of that object in the resume.
+**/
+
+
+work.display();
+//work displayed
+/**
+the display function of this particular object (work in  this case), displays all the properties of that object in the resume.
+**/
+
+
+education.display();
+//education displayed
+/**
+the display function of this particular object (education in  this case), displays all the properties of that object in the resume.
+**/
+
+
+projects.display();
 //projects displayed
 /**
 the display function of this particular object (projects in  this case), displays all the properties of that object in the resume.
