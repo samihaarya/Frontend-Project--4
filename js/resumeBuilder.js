@@ -129,21 +129,21 @@ var projects = {
             "title": "SPEECH RECOGNISATION",
             "dates": "2016",
             "description": "I worked under Chitkara University's Research Department(CURIN) on Natural Language Speech Recognisation in Punjabi Language",
-            "image": ["images/image2.png"],
+            "images": ["images/image2.png"],
             "url": "https://www.facebook.com/Chitkara-University-Speech-Recognition-Hub-1712477912326760/"
         },
         {
             "title": "My Portfolio",
             "dates": "2016",
             "description": "I have made a responsive Portfolio page using bootstrap under FrontEnd Course",
-            "image": ["images/image1.png"],
+            "images": ["images/image1.png"],
             "url": "https://github.com/samihaarya/Frontend-Project--3"
         },
         {
             "title": "Movie Website",
             "dates": "2016",
             "description": "I made a responsive website using python under Intro to programming",
-            "image": ["images/image3.png"],
+            "images": ["images/image3.png"],
             "url": "https://github.com/samihaarya/Intro-to-programming---lesson-3"
         }
     ]
@@ -159,8 +159,8 @@ projects.display = function() {
 
             $(".project-entry:last").append(formattedDates);
             $(".project-entry:last").append(formattedDescription);
-            for (var n = 0; n < projects.Projects[i].image.length; n++) {
-              var formattedImage = HTMLprojectImage.replace("%data%", projects.Projects[i].image[n]);
+            for (var n = 0; n < projects.Projects[i].images.length; n++) {
+              var formattedImage = HTMLprojectImage.replace("%data%", projects.Projects[i].images[n]);
               $(".project-entry:last").append(formattedImage);
             }
         }
